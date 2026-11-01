@@ -14,7 +14,13 @@ test plan :
 <img width="1015" height="853" alt="image" src="https://github.com/user-attachments/assets/4cd031e1-894c-4a88-9d68-126c540e60c5" />
 
 
-3. Random Test :
+2. Random Test :
 
-4. Fixed Pattern Test:
+<img width="1916" height="376" alt="image" src="https://github.com/user-attachments/assets/be234726-07b6-4676-983a-dd6f1ad11e42" />
+從上圖可以看到address以及data都有隨機出現，且寫入讀取皆相同，符合test plan 2 的目標。
+
+跑測試200次，成功200次
+<img width="1028" height="883" alt="image" src="https://github.com/user-attachments/assets/3778908b-c8b0-4773-85b8-b173d0ddaea7" />
+
+3. Fixed Pattern Test:
    <img width="2000" height="358" alt="image" src="https://github.com/user-attachments/assets/722d556c-21bd-4313-96a9-f3e67e4c30ec" />
