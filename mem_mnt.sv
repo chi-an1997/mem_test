@@ -24,7 +24,7 @@ task mem_mnt::main_phase (uvm_phase phase);
     mem_seq_item tr;
     forever begin
     @(posedge vif.clk);
-        if (vif.rd) begin
+        if (vif.rd  && vif.out_addr>= 1'b0) begin
             tr = new("tr");
             tr.addr= vif.out_addr; 
             tr.dout= vif.dout;
