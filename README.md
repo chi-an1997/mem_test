@@ -8,9 +8,13 @@ test plan :
 
 1. Normal Test:
 <img width="1982" height="366" alt="image" src="https://github.com/user-attachments/assets/09018097-0bee-4234-bb95-ec58d913de1d" />
-從上圖可以看到address以及data都有呈現遞增情況，符合test plan 1 的目標
+從上圖可以看到address以及data都有呈現遞增情況，符合test plan 1 的目標。
 
-2. Random Test :
+跑測試200次，成功200次
+<img width="1015" height="853" alt="image" src="https://github.com/user-attachments/assets/4cd031e1-894c-4a88-9d68-126c540e60c5" />
 
-3. Fixed Pattern Test:
+
+3. Random Test :
+
+4. Fixed Pattern Test:
    <img width="2000" height="358" alt="image" src="https://github.com/user-attachments/assets/722d556c-21bd-4313-96a9-f3e67e4c30ec" />
