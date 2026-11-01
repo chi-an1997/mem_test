@@ -42,13 +42,11 @@ class mem_normal_test extends uvm_test;
     virtual task main_phase (uvm_phase phase);
         phase.raise_objection(this);
         repeat (10) @(posedge vif.clk);
+            vif.wr<=1'b1;
+        repeat (2) @(posedge vif.clk);
+            vif.rd<=1'b1;
             test_case();
-            vif.wr<=1'b1;
-            extern_phase();
-        
-        repeat (1)@(posedge vif.clk); 
-            vif.wr<=1'b1;
-        repeat (200)@(posedge vif.clk);
+        repeat (10)@(posedge vif.clk);
             $display ("Finish test case..........................................");
         phase.drop_objection(this);
     endtask : main_phase
