@@ -24,3 +24,6 @@ test plan :
 
 3. Fixed Pattern Test:
    <img width="2000" height="358" alt="image" src="https://github.com/user-attachments/assets/722d556c-21bd-4313-96a9-f3e67e4c30ec" />
+   從上圖可以看到address以及data都有出現指定的值，且寫入讀取皆相同，符合test plan 3 的目標
+
+<img width="1027" height="885" alt="image" src="https://github.com/user-attachments/assets/dbe91e5d-0c4c-464f-a0c1-e5e5267203a4" />
