@@ -26,8 +26,8 @@ task mem_mnt::main_phase (uvm_phase phase);
     @(posedge vif.clk);
         if (vif.rd) begin
             tr = new("tr");
-            tr.addr<= vif.out_addr; 
-            tr.dout<< vif.dout;
+            tr.addr= vif.out_addr; 
+            tr.dout= vif.dout;
 
             `uvm_info("MONITOR", "Monitor received transaction", UVM_LOW)
             ap.write(tr);
