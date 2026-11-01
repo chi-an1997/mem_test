@@ -21,44 +21,17 @@ class mem_drv extends uvm_driver# (mem_seq_item);
     extern task drive_start(mem_seq_item mem_tr);
 
     virtual task run_phase (uvm_phase phase);
-        vif.mem_mp.wr = 0;
-        vif.mem_mp.rd = 0;
-        vif.mem_mp.addr = 0;
-        vif.mem_mp.din = 0;
-        
-        seq_item_port.get_next_item(req);
-        vif.mem_mp.wr = 1;
-        vif.mem_mp.rd = 0;
-        vif.mem_mp.din <= req.din; 
-        vif.mem mp.addr <= req.addr; 
-        drv_port.write(req);
-        seq_item_port.item_done();
+    mem_seq_item exp;
 
         @(posedge vif.clk);
 
         forever begin
             seq_item_port.get_next_item(req); 
-            vif.mem_mp.wr <= 1;
-            vif.mem_mp.rd <= 1; 
-            vif.mem_mp.din <= req.din; 
-            vif.mem_mp.addr <= req.addr; 
+            drive_start(req);
+            $cast(exp, req.clone());
             drv_port.write(req);
-
-            @(posedge vif.clk);
             seq_item_port.item_done();
-            
-            if (req.last) begin
-                vif.mem_mp.wr <= 0; 
-                vif.mem_mp.rd <= 0; 
-                break;
-            end
         end
-
-        vif.mem_mp.wr = 0;
-        vif.mem_mp.rd = 0;
-        vif.mem_mp.addr = 0;
-        vif.mem_mp.din = 0; 
-        drv_port.write(req);
     endtask
 endclass
 
@@ -66,7 +39,4 @@ task mem_drv::drive_start(mem_seq_item mem_tr);
     repeat (1)@(posedge vif.clk); 
     vif.mem_mp.din <<= req.din; 
     vif.mem_mp.addr<= req.addr; 
-    vif.mem_mp. rd <= req.rd;
-    vif.mem_mp.wr <= req.wr;
-    drv_port.write(mem_tr);
 endtask
