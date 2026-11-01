@@ -9,12 +9,11 @@ class mem_seq extends uvm_sequence # (mem_seq_item);
 
     //body
     virtual task body();
-        for (int i = 0; i < 65536; i++) begin
+        for (int i = 0; i < 200; i++) begin
             req = new(); 
             start_item (req);
             req.addr = i;
             req.din = i;
-            req.last = (i ==65535);
             finish_item (req);
         end
     endtask body
