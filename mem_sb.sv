@@ -28,9 +28,8 @@ endfunction
 function void mem_sb: :write_exp (mem_seq_item mem);
     mem_seq_item exp_tran; 
     exp_tran = new();
-    exp_tran.dout = exp_tran.din; 
-    exp_tran.out_addr = exp_tran.addr; 
-    expect queue.push_back(exp_tran);
+    exp_tran.copy (mem);
+    expect_queue.push_back(exp_tran);
 
     `uvm_info("my_scoreboard", "Received expect transaction", UVM_LOW)
 endfunction
@@ -53,8 +52,7 @@ task mem_sb::main_phase (uvm_phase phase);
     wait((expect queue.size()>0) && (act_queue.size()>0));
     exp_tran = expect_queue.pop_front();
     act_tran = act_queue.pop_front();
-    result = act_tran.compare (exp_tran);
-    if (result) begin
+        if (exp_tran.din == act_tran.dout && exp_tran.addr == act_tran.out_addr) begin
         `uvm_info("my_scoreboard", "Compare SUCCESSFULLY", UVM LOW);
     end
     else begin
